@@ -6,6 +6,10 @@ import { RootStackParamList } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 import {Login, Encabezado} from '../screens/Login'
 import { CapturarQR } from '../screens/CapturarQR';
+import Almacen from '../screens/Almacen/Almacen';
+import Producto from '../screens/AltaProducto/Producto';
+import CodigoBarras from '../screens/CapturarProducto/CapturarProducto';
+import Listado from '../screens/Listado/Listado';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -28,6 +32,10 @@ function RootNavigator() {
     <Stack.Navigator>
       <Stack.Screen name="Root" component={Login} options={{ headerShown: false }} />
       <Stack.Screen name="ScannerQr" component={CapturarQR} options={{ headerShown: false }} />
+      <Stack.Screen name="Localizador" component={Almacen} options={{ headerShown: false }} />
+      <Stack.Screen name="AltaProducto" component={Producto} options={{ headerShown: false }} />
+      <Stack.Screen name="CapturarProducto" component={CodigoBarras} options={{ headerShown: false }} />
+      <Stack.Screen name="ListaInventario" component={Listado} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 }

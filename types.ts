@@ -6,6 +6,7 @@
 import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import { CompositeScreenProps, NavigatorScreenParams } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import {serviceList} from './utils'
 
 declare global {
   namespace ReactNavigation {
@@ -16,7 +17,13 @@ declare global {
 export type RootStackParamList = {
   Root: NavigatorScreenParams<RootTabParamList> | undefined;
   ScannerQr: any;
+  Localizador: any;
+  AltaProducto: any;
+  CapturarProducto: any;
+  ListaInventario: any;
 };
+
+export type TServiceList = keyof typeof serviceList;
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<
   RootStackParamList,

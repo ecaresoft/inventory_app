@@ -2,14 +2,16 @@ import { useNavigation } from '@react-navigation/native';
 import * as React from 'react';
 import { Appbar } from 'react-native-paper';
 
-const Encabezad = () => {
-  const navigation = useNavigation();
+export const Header_ = () => {
 
-  const _handleMore = () => console.log('Shown more');
+
+    const navigation = useNavigation();
+
+    const _handleMore = () => console.log('Shown more');
   
-  const _goBack = () => {
-   navigation.goBack();
-  };
+    const _goBack = () => {
+     navigation.goBack();
+    };
 
   return (
     <Appbar.Header>
@@ -21,4 +23,4 @@ const Encabezad = () => {
   );
 };
 
-export default Encabezad;
+export default Header_;
