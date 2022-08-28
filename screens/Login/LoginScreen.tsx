@@ -4,10 +4,11 @@ import { SafeAreaView,View} from 'react-native';
 import {Card, TextInput, Button} from 'react-native-paper';
 import { api, services } from '../../utils';
 import loginStyle from './login.style';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // react hooks
 const PantallaInicio= () =>{
-  const [user, setUser] = React.useState<string>('');
+  const [user, setUser] = React.useState<string>('usuario 1');
   const [password, setPassword] = React.useState<string>('');
   const navigation = useNavigation();
 
@@ -16,16 +17,34 @@ const PantallaInicio= () =>{
   }
 
   async function login() {
-    const respuesta: any = await api('post', 'postLogin' , {
-      username: 'ECS_MELIZONDO',
-      password: '0skz41hoh6',
-      extra: { "clientId": "10001032", "orgId": "10001450", "roleId": "10001464","estServId":"10001439"},
-      'Content-Type': 'application/x-www-form-urlencoded',
-    });
-    services.defaults.headers.common.Authorization = `Bearer ${respuesta.token}`;
-    setTimeout(() => {
-      navigateToQr();
-    }, 1200);
+    try{
+      const details = {
+        'username':'ECS_MELIZONDO',
+        'password': '0skz41hoh6' 
+     };
+      await AsyncStorage.setItem('token', JSON.stringify({token: 'x', user: user}));
+      setTimeout(() => {
+        navigateToQr();
+      }, 1200);
+      // const formBody = Object.entries(details).map(([key, value]) => encodeURIComponent(key) + '=' + encodeURIComponent(value)).join('&')
+      // fetch('http://44.237.243.120:6081/eCareSoftWeb/api/login', {
+      //  method: 'POST',
+      //  headers: {
+      //   'Content-type': 'application/x-www-form-urlencoded'
+      //  },
+      //  body: formBody
+      //  })
+      //  .then(function(response){ 
+      //  return response.json()})
+      //  .then(function(data)
+      //  {console.log(data)})
+      // await AsyncStorage.setItem('token', JSON.stringify(data));
+
+      //  .catch(error => console.error('Error:', error)); 
+     //return;
+    }catch(e){
+      console.log(e)
+    }
   }
 
   return(

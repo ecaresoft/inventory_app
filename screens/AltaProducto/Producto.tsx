@@ -13,8 +13,9 @@ const Producto = () => {
 
   const navigation = useNavigation();
   function navigateCaptureProduct() {
-    navigation.navigate('CapturarProducto');
+      navigation.navigate('CapturarProducto');
   }
+
   function navigateToList() {
     navigation.navigate('ListaInventario');
   }
